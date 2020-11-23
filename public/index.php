@@ -45,6 +45,12 @@ $middleware($app);
 $routes = require __DIR__ . '/../app/routes.php';
 $routes($app);
 
+$dbSettings = $container->get('settings')['db'];
+$capsule = new Illuminate\Database\Capsule\Manager;
+$capsule->addConnection($dbSettings);
+$capsule->bootEloquent();
+$capsule->setAsGlobal();
+
 /** @var bool $displayErrorDetails */
 $displayErrorDetails = $container->get('settings')['displayErrorDetails'];
 
