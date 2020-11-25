@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Domain\User;
 
-use JsonSerializable;
+// use JsonSerializable;
 
-class User implements JsonSerializable
+class User extends  \Illuminate\Database\Eloquent\Model
 {
     /**
      * @var int|null
