@@ -5,14 +5,14 @@ namespace App\Application\Actions\Message;
 
 use Psr\Http\Message\ResponseInterface as Response;
 
-class ListMessageAction extends MessageAction
+class ListMessagesAction extends MessageAction
 {
     /**
      * {@inheritdoc}
      */
     protected function action(): Response
     {
-        $messages = $this->userRepository->findAll();
+        $messages = $this->messageRepository->findAll();
 
         $this->logger->info("Message list was viewed.");
 

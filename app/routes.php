@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 // User Import
 use App\Application\Actions\User\ListUsersAction;
+use App\Application\Actions\User\ViewUserAction;
 use App\Application\Actions\User\CreateUserAction;
 use App\Application\Actions\User\UpdateUserAction;
 use App\Application\Actions\User\DeleteUserAction;
-use App\Application\Actions\User\ViewUserAction;
 
 // Message Import
 use App\Application\Actions\Message\ListMessagesAction;
