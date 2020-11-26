@@ -8,28 +8,25 @@ return function (ContainerBuilder $containerBuilder) {
     // Global Settings Object
     $containerBuilder->addDefinitions([
         'settings' => [
-             // Slim Settings
+            // Slim Settings
             'determineRouteBeforeAppMiddleware' => false,
-            'displayErrorDetails' => true,
+            'displayErrorDetails' => true, // Should be set to false in production
+            'logger' => [
+                'name' => 'slim-app',
+                'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
+                'level' => Logger::DEBUG,
+            ],
+
             'db' => [
                 'driver' => 'mysql',
                 'host' => 'localhost',
                 'database' => 'slimapi',
                 'username' => 'root',
                 'password' => 'root',
-                'charset'   => 'utf8',
                 'collation' => 'utf8_unicode_ci',
-                'prefix'    => '',
-            ],
-
-            [
-            'displayErrorDetails' => true, // Should be set to false in production
-            'logger' => [
-                'name' => 'slim-app',
-                'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
-                'level' => Logger::DEBUG,
-                ],
-            ],
-        ]
+                'charset' => 'utf8',
+                'prefix' => ''
+            ]
+        ],
     ]);
 };
